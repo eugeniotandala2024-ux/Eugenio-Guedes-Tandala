@@ -7,7 +7,18 @@ type Business={name:string;slug:string;phone:string;description:string;cover?:st
 type Event={date:string;type:"visit"|"whatsapp";productId?:string};
 type Data={business:Business;products:Product[];highlights:Highlight[];events:Event[];loggedIn:boolean};
 const KEY="catalogo-digital-v2";
-const fresh=():Data=>({business:{name:"",slug:"",phone:"",description:"",hours:"",location:"",template:"Loja"},products:[],highlights:[],events:[],loggedIn:false});
+const demoProducts:Product[]=[
+{id:"demo-1",name:"Bolo de Chocolate",price:8500,promo:7500,description:"Bolo húmido de chocolate, preparado por encomenda e ideal para aniversários e momentos especiais.",available:true,clicks:12,order:0,category:"Bolos"},
+{id:"demo-2",name:"Bolo de Baunilha",price:7000,description:"Bolo leve de baunilha com acabamento simples e caseiro. Encomendas com antecedência.",available:true,clicks:8,order:1,category:"Bolos"},
+{id:"demo-3",name:"Sumo Natural de Maracujá",price:2500,description:"Sumo natural de maracujá servido fresco, sem complicação.",available:true,clicks:5,order:2,category:"Bebidas"},
+{id:"demo-4",name:"Mini Salgados",price:6000,promo:5500,description:"Selecção de mini salgados para festas, reuniões e pequenas encomendas.",available:true,clicks:17,order:3,category:"Salgados"},
+{id:"demo-5",name:"Caixa Especial",price:15000,description:"Combinação de bolo e salgados para oferecer ou partilhar em família.",available:false,clicks:4,order:4,category:"Kits"}
+];
+const demoHighlights:Highlight[]=[
+{id:"h1",text:"Encomendas abertas para esta semana",active:true},
+{id:"h2",text:"10% de desconto em encomendas seleccionadas",active:true}
+];
+const fresh=():Data=>({business:{name:"Casa Doce Luanda",slug:"casa-doce-luanda",phone:"929138244",description:"Bolos caseiros, salgados e bebidas preparados por encomenda em Luanda. Produtos simples, frescos e feitos para partilhar.",hours:"Segunda a Sábado, 08h00 às 18h00",location:"Luanda, Angola",template:"Bolos"},products:demoProducts,highlights:demoHighlights,events:[],loggedIn:false});
 function load():Data{try{const x=JSON.parse(localStorage.getItem(KEY)||"null");return x?{...fresh(),...x}:fresh()}catch{return fresh()}}
 const money=(n:number)=>new Intl.NumberFormat("pt-AO",{maximumFractionDigits:0}).format(Math.max(0,n))+" Kz";
 const slugify=(v:string)=>v.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g,"-").replace(/(^-|-$)/g,"").slice(0,60);
