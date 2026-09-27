@@ -1,11 +1,29 @@
-<div align="center">
+# Catálogo Digital MVP
 
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+MVP mobile-first para pequenos negócios em Angola.
 
-  <h1>Built with AI Studio</h2>
+## Fluxo funcional
+- Login por telefone em modo local de teste
+- Criação do catálogo
+- Template por tipo de negócio
+- Capa/logo
+- Produtos com foto, preço, promoção, descrição e disponibilidade
+- Editar, apagar, duplicar e ordenar produtos
+- Destaques/anúncios com foto e data de fim
+- Catálogo público por slug
+- WhatsApp geral e por produto
+- Registo de visitas e cliques WhatsApp
+- Estatísticas simples dos últimos 7 dias
+- Partilha e cópia do link
+- Persistência local para teste imediato
+- Interface mobile-first e leve
 
-  <p>The fastest path from prompt to production with Gemini.</p>
+## Executar
+npm install
+npm run dev
 
-  <a href="https://aistudio.google.com/apps">Start building</a>
+## Produção
+O MVP está funcional localmente. O login OTP real e persistência multi-utilizador exigem backend/serviço de autenticação e base de dados. A camada de UI e os fluxos estão preparados para essa substituição sem depender de localStorage.
 
-</div>
+## Princípios
+Sem pagamentos, stock quantitativo, chat interno, múltiplos utilizadores, app nativa ou editor de sites complexo no MVP.
