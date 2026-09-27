@@ -14,7 +14,9 @@ const slugify=(v:string)=>v.toLowerCase().normalize("NFD").replace(/[\u0300-\u03
 const cleanPhone=(v:string)=>{const d=v.replace(/\D/g,"");return d.startsWith("244")?d:"244"+d};
 const wa=(phone:string,msg:string)=>"https://wa.me/"+cleanPhone(phone)+"?text="+encodeURIComponent(msg);
 const today=()=>{const d=new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")};
-const COMPRESSIONS={leve:{max:900,quality:.62,label:"Leve"},equilibrada:{max:1400,quality:.82,label:"Equilibrada"},alta:{max:1800,quality:.92,label:"Alta qualidade"}} as const;\ntype CompressionKey=keyof typeof COMPRESSIONS;\nconst fileToData=(f:File,mode:CompressionKey="equilibrada")=>new Promise<string>((resolve,reject)=>{
+const COMPRESSIONS={leve:{max:900,quality:.62,label:"Leve"},equilibrada:{max:1400,quality:.82,label:"Equilibrada"},alta:{max:1800,quality:.92,label:"Alta qualidade"}} as const;
+type CompressionKey=keyof typeof COMPRESSIONS;
+const fileToData=(f:File,mode:CompressionKey="equilibrada")=>new Promise<string>((resolve,reject)=>{
  const r=new FileReader();
  r.onerror=reject;
  r.onload=()=>{
